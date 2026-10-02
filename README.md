@@ -1,27 +1,29 @@
 # LazyLoadModules
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
+A small demo of lazy loading in Angular 22.
+
+The app shell only has the title, three buttons, and a router outlet. All feature code loads on demand:
+
+| Feature | How it loads | File |
+| --- | --- | --- |
+| Customers | `loadChildren`: a lazy group of child routes (this replaces a lazy NgModule) | `src/app/customers/customers.routes.ts` |
+| Orders | `loadComponent`: one lazy standalone component | `src/app/orders/orders.ts` |
+| Order history | `@defer (on interaction)`: a lazy part of a template | `src/app/orders/order-history.ts` |
+
+Run `npm run build` and look at the "Lazy chunk files" table. Each feature has its own chunk. You can also open the Network tab in the browser and click the buttons to see the chunks load.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm start` and open `http://localhost:4200/`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build`. The output goes to `dist/lazy-load-modules/browser`.
 
-## Running unit tests
+## Tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm test` to run the unit tests with [Vitest](https://vitest.dev).
 
-## Running end-to-end tests
+## Lint
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run `npm run lint` to lint with [angular-eslint](https://github.com/angular-eslint/angular-eslint).
